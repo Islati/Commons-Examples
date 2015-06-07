@@ -1,6 +1,7 @@
 package com.caved_in.commonsexamples.basic_plugin;
 
 import com.caved_in.commons.plugin.BukkitPlugin;
+import com.caved_in.commonsexamples.basic_plugin.command.CommandsExample;
 import com.caved_in.commonsexamples.basic_plugin.gadget.ChickenLauncher;
 import com.caved_in.commonsexamples.basic_plugin.listeners.WelcomeListener;
 
@@ -14,7 +15,7 @@ New additions ontop of the BukkitPlugin class are:
 
     - A sync and async scheduled executor service which
       can be used to create futures and promises,
-      scheduled listeners, and a load more goodies to be explored!
+      scheduled listeners, and more.
 
     - A scoreboard manager! The board manager is an easy way to provide
       scoreboards on a per-player basis -or globally- with a load of syntactic sugar goodness,
@@ -31,7 +32,19 @@ New additions ontop of the BukkitPlugin class are:
       Differs from the action bar & chat as it shows where the item-name's would be shown.
 
     - A Command Handler, which handles ALL the leg-work of our delightful annotation based
-      command system (to be displayed in later examples)
+      command system. Credits to Amoeba man for this innovative, awesome way to make commands!
+
+      It's not as intense as the worldedit framework, though it's intuitive, it's simple,
+      it's fluent, and it's neat!
+
+    - A very basic task manager wrapper- Used to register and manage tasks on a string based index;
+      This will likely change in the near-ish future but it won't be deprecated, only expanded upon.
+
+      All tasks registered with this manager is managed; Closing on Shutdown, not really worrying
+      about the semantics of it all.
+
+  The whole idea of Commons is to make things intuitive, make them feel easy, and to
+  truly assist in your plugin development.
  */
 public class BasicPluginExample extends BukkitPlugin {
 
@@ -46,17 +59,28 @@ public class BasicPluginExample extends BukkitPlugin {
         unlimited amount of listeners for the server without repeated calls of the method...
         YAY!
          */
-        registerListeners(new WelcomeListener());
+        registerListeners(
+                new WelcomeListener()
+        );
 
         /*
         Register our chicken launcher gadget so we can start spreading some foul-love to all those
         who cross our path; More info on the chicken lancher and gadget creation in it's respective class!
          */
-        registerGadgets(ChickenLauncher.getInstance());
+        registerGadgets(
+                ChickenLauncher.getInstance()
+        );
+
+        registerCommands(
+                new CommandsExample()
+        );
     }
 
     @Override
     public void shutdown() {
+        /*
+
+         */
 
     }
 

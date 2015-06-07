@@ -24,6 +24,7 @@ public class WelcomeListener implements Listener {
             .item();
 
 
+    @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
 
